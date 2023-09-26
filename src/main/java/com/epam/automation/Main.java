@@ -6,7 +6,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
 
         WebDriver driver = new ChromeDriver();
         PastebinPage pastebinPage = new PastebinPage(driver);
@@ -16,12 +16,13 @@ public class Main {
         String expiration = "10 Minutes";
         String name = "helloweb";
 
-        try {
-            // create a new paste
-            pastebinPage.createNewPaste(code, expiration, name);
-        } finally {
-            // close the WebDriver
-            driver.quit();
-        }
+        // Create a new paste
+        pastebinPage.createNewPaste(code, expiration, name);
+
+        // added 5 secs just to see the result on a browser before quitting
+        Thread.sleep(5000);
+
+        // Close the WebDriver instance
+        driver.quit();
     }
 }
