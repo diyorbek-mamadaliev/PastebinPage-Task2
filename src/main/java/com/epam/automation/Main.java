@@ -11,16 +11,16 @@ public class Main {
         WebDriver driver = new ChromeDriver();
         PastebinPage pastebinPage = new PastebinPage(driver);
 
-        // Test data
+        // test data
         String code = "Hello from WebDriver";
         String expiration = "10 Minutes";
         String name = "helloweb";
 
         try {
-            // Create a new paste
+            // create a new paste
             pastebinPage.createNewPaste(code, expiration, name);
         } finally {
-            // Close the WebDriver instance
+            // close the WebDriver
             driver.quit();
         }
     }
