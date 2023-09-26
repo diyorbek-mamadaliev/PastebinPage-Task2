@@ -11,7 +11,7 @@ public class Main {
         WebDriver driver = new ChromeDriver();
         PastebinPage pastebinPage = new PastebinPage(driver);
 
-        // test data
+        // here we can input test data
         String code = "Hello from WebDriver";
         String expiration = "10 Minutes";
         String name = "helloweb";
