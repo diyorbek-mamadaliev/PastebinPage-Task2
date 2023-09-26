@@ -1,3 +1,5 @@
+**By Diyorbek Mamadaliev**
+
 # PastebinPage - Selenium Automation Project
 
 This project demonstrates how to use Selenium WebDriver with JUnit for automated web testing using Google Chrome. It provides a simple example of interacting with the Pastebin website.
