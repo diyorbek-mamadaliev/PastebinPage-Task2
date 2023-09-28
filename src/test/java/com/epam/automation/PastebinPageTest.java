@@ -16,13 +16,11 @@ class PastebinPageTest {
 
     @BeforeEach
     void setUp() {
-        // Create a new WebDriver instance
+
         driver = new ChromeDriver();
 
-        // Set a 10-second implicit wait
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
-        // Instantiate the PastebinPage class
         pastebinPage = new PastebinPage(driver);
     }
 
