@@ -16,7 +16,7 @@ public class PastebinPage {
         this.driver = driver;
     }
 
-    public void createNewPaste(String code, String expiration, String name) {
+    public void createNewPaste(String code, String expiration, String highlight, String name) {
         // navigate to the "New Paste" page
         driver.get("https://pastebin.com/");
 
@@ -30,6 +30,13 @@ public class PastebinPage {
                 .until(ExpectedConditions.elementToBeClickable(By.id("select2-postform-expiration-container")));
         expirationDropdown.click();
         driver.findElement(By.xpath("//li[text()='" + expiration + "']")).click();
+
+        // select the syntax highlighting
+        WebElement highlightDropdown = new WebDriverWait(driver, Duration.ofSeconds(10))
+                .until(ExpectedConditions.elementToBeClickable(By.id("select2-postform-format-container")));
+        highlightDropdown.click();
+        driver.findElement(By.xpath("//li[text()='" + highlight + "']")).click();
+
 
         // enter the name
         WebElement nameField = new WebDriverWait(driver, Duration.ofSeconds(10))
