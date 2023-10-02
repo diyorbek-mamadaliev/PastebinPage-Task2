@@ -10,7 +10,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 
 public class Main {
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) {
         WebDriver driver = new ChromeDriver();
         PastebinPage pastebinPage = new PastebinPage(driver);
 
@@ -30,7 +30,7 @@ public class Main {
         // Verify page title
         WebElement titleElement = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//h1[text()='how to gain dominance among developers']")));
         if (titleElement.isDisplayed()) {
-            System.out.println("Expected browser page title:" + name + "Actual:" + titleElement.getText() + "'.");
+            System.out.println("✓ Expected browser page title: " + name + "." + "\nActual: " + titleElement.getText() + ".");
         } else {
             System.out.println("Browser page title does not match!");
         }
@@ -38,7 +38,7 @@ public class Main {
         // Verify syntax highlighting
         WebElement syntaxHighlightingElement = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//a[text()='Bash']")));
         if (syntaxHighlightingElement.isDisplayed()) {
-            System.out.println("Expected syntax suspended:" + highlight + "Actual:" + syntaxHighlightingElement.getText() + ".");
+            System.out.println("\n✓ Expected syntax suspended: " + highlight + "." + "\nActual: " + syntaxHighlightingElement.getText() + ".");
         } else {
             System.out.println("Syntax is not suspended for Bash.");
         }
@@ -47,13 +47,10 @@ public class Main {
         WebElement codeElement = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//ol[@class='bash']")));
         String savedCode = codeElement.getText();
         if (savedCode.equals(code)) {
-            System.out.println("The saved code matches the one from paragraph 2.");
+            System.out.println("\n✓ Expected code: " + code + "." + "\n" + "\nActual: '" + savedCode + "'.");
         } else {
-            System.out.println("The saved code does not match the one from paragraph 2.");
+            System.out.println("The saved code does not match!");
         }
-
-        // added 5 seconds delay to see the result on the browser before quitting
-        Thread.sleep(5000);
 
         // Close the WebDriver instance
         driver.quit();
