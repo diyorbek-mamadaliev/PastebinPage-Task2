@@ -27,7 +27,7 @@ public class Main {
 
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
-        // Verify page title
+        // check page title
         WebElement titleElement = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//h1[text()='how to gain dominance among developers']")));
         if (titleElement.isDisplayed()) {
             System.out.println("✓ Expected browser page title: " + name + "." + "\nActual: " + titleElement.getText() + ".");
@@ -35,7 +35,7 @@ public class Main {
             System.out.println("Browser page title does not match!");
         }
 
-        // Verify syntax highlighting
+        // check syntax highlighting
         WebElement syntaxHighlightingElement = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//a[text()='Bash']")));
         if (syntaxHighlightingElement.isDisplayed()) {
             System.out.println("\n✓ Expected syntax suspended: " + highlight + "." + "\nActual: " + syntaxHighlightingElement.getText() + ".");
@@ -43,7 +43,7 @@ public class Main {
             System.out.println("Syntax is not suspended for Bash.");
         }
 
-        // check that the code matches the one from paragraph 2
+        // check that the code matches
         WebElement codeElement = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//ol[@class='bash']")));
         String savedCode = codeElement.getText();
         if (savedCode.equals(code)) {
@@ -52,7 +52,6 @@ public class Main {
             System.out.println("The saved code does not match!");
         }
 
-        // Close the WebDriver instance
         driver.quit();
     }
 }
