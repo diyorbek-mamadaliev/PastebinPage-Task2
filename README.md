@@ -10,7 +10,7 @@ Before you begin, make sure you have the following prerequisites installed:
 
 - **Java Development Kit (JDK)**: Ensure that you have Java Development Kit 21 or higher installed on your system.
 
-- **Google Chrome**: Make sure you have Google Chrome Version 117.0.5938.92 installed on your machine.
+- **Google Chrome**: Make sure you have Google Chrome Version 114.0.5938.92 and above installed on your machine.
 
 - **Maven**: Ensure that you have Apache Maven installed. This project uses Maven for dependency management and build automation.
 
