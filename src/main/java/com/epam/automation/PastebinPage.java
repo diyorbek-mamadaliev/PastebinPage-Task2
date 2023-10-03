@@ -12,7 +12,7 @@ public class PastebinPage {
 
     private final WebDriver driver;
 
-    private final By codeFieldLocator = By.xpath("//*[@id='postform-text']");
+    private final By codeFieldLocator = By.id("postform-text");
     private final By expirationDropdownLocator = By.id("select2-postform-expiration-container");
     private final By highlightDropdownLocator = By.id("select2-postform-format-container");
     private final By nameFieldLocator = By.id("postform-name");
