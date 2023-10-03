@@ -17,33 +17,33 @@ public class PastebinPage {
     }
 
     public void createNewPaste(String code, String expiration, String highlight, String name) {
-        // navigate to the "New Paste" page
+
         driver.get("https://pastebin.com/");
 
-        // enter the code
+
         WebElement codeField = new WebDriverWait(driver, Duration.ofSeconds(10))
                 .until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='postform-text']")));
         codeField.sendKeys(code);
 
-        // select the expiration
+
         WebElement expirationDropdown = new WebDriverWait(driver, Duration.ofSeconds(10))
                 .until(ExpectedConditions.elementToBeClickable(By.id("select2-postform-expiration-container")));
         expirationDropdown.click();
         driver.findElement(By.xpath("//li[text()='" + expiration + "']")).click();
 
-        // select the syntax highlighting
+
         WebElement highlightDropdown = new WebDriverWait(driver, Duration.ofSeconds(10))
                 .until(ExpectedConditions.elementToBeClickable(By.id("select2-postform-format-container")));
         highlightDropdown.click();
         driver.findElement(By.xpath("//li[text()='" + highlight + "']")).click();
 
 
-        // enter the name
+
         WebElement nameField = new WebDriverWait(driver, Duration.ofSeconds(10))
                 .until(ExpectedConditions.visibilityOfElementLocated(By.id("postform-name")));
         nameField.sendKeys(name);
 
-        // click and submit the paste
+
         WebElement submitButton = new WebDriverWait(driver, Duration.ofSeconds(10))
                 .until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='w0']/div[5]/div[1]/div[10]/button")));
         submitButton.click();
