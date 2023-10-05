@@ -29,11 +29,9 @@ Before you begin, make sure you have the following prerequisites installed:
            <version>4.12.1</version>
        </dependency>
 
-       <!-- JUnit 5 for Testing -->
        <dependency>
-           <groupId>org.junit.jupiter</groupId>
-           <artifactId>junit-jupiter-api</artifactId>
-           <version>5.8.1</version>
-           <scope>test</scope>
-       </dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>7.8.0</version>
+        </dependency>
    </dependencies>
