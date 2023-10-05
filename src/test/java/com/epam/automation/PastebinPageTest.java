@@ -37,15 +37,15 @@ public class PastebinPageTest {
 
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
-        // Assertion 1: Verify the page title
+        // Assertion 1:
         WebElement titleElement = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//h1[text()='how to gain dominance among developers']")));
         Assert.assertTrue(titleElement.isDisplayed(), "Page title does not match.");
 
-        // Assertion 2: Verify syntax highlighting
+        // Assertion 2:
         WebElement syntaxHighlightingElement = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//a[text()='Bash']")));
         Assert.assertTrue(syntaxHighlightingElement.isDisplayed(), "Syntax is not suspended for Bash.");
 
-        // Assertion 3: Verify saved code
+        // Assertion 3:
         WebElement codeElement = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//ol[@class='bash']")));
         String savedCode = codeElement.getText();
         Assert.assertEquals(savedCode, code, "Saved code does not match.");
