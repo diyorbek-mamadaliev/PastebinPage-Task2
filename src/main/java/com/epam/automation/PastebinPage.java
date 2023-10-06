@@ -18,33 +18,43 @@ public class PastebinPage {
     private final By nameFieldLocator = By.id("postform-name");
     private final By submitButtonLocator = By.xpath("//button[@class='btn -big']");
 
+    // Reusable WebDriverWait with a default timeout of 10 seconds
+    private final WebDriverWait wait;
+
     public PastebinPage(WebDriver driver) {
         this.driver = driver;
+        // Initialize the webdriver wait
+        this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
 
     public void createNewPaste(String code, String expiration, String highlight, String name) {
         driver.get("https://pastebin.com/");
 
-        WebElement codeField = new WebDriverWait(driver, Duration.ofSeconds(10))
-                .until(ExpectedConditions.visibilityOfElementLocated(codeFieldLocator));
+        WebElement codeField = waitForVisibilityOfElement(codeFieldLocator);
         codeField.sendKeys(code);
 
-        WebElement expirationDropdown = new WebDriverWait(driver, Duration.ofSeconds(10))
-                .until(ExpectedConditions.elementToBeClickable(expirationDropdownLocator));
+        WebElement expirationDropdown = waitForElementToBeClickable(expirationDropdownLocator);
         expirationDropdown.click();
         driver.findElement(By.xpath("//li[text()='" + expiration + "']")).click();
 
-        WebElement highlightDropdown = new WebDriverWait(driver, Duration.ofSeconds(10))
-                .until(ExpectedConditions.elementToBeClickable(highlightDropdownLocator));
+        WebElement highlightDropdown = waitForElementToBeClickable(highlightDropdownLocator);
         highlightDropdown.click();
         driver.findElement(By.xpath("//li[text()='" + highlight + "']")).click();
 
-        WebElement nameField = new WebDriverWait(driver, Duration.ofSeconds(10))
-                .until(ExpectedConditions.visibilityOfElementLocated(nameFieldLocator));
+        WebElement nameField = waitForVisibilityOfElement(nameFieldLocator);
         nameField.sendKeys(name);
 
-        WebElement submitButton = new WebDriverWait(driver, Duration.ofSeconds(10))
-                .until(ExpectedConditions.elementToBeClickable(submitButtonLocator));
+        WebElement submitButton = waitForElementToBeClickable(submitButtonLocator);
         submitButton.click();
+    }
+
+    // wait for element visibility
+    private WebElement waitForVisibilityOfElement(By locator) {
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+    }
+
+    // wait for element to be clickable
+    private WebElement waitForElementToBeClickable(By locator) {
+        return wait.until(ExpectedConditions.elementToBeClickable(locator));
     }
 }
