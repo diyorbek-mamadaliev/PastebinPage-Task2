@@ -18,6 +18,9 @@ public class PastebinPage {
     private final By nameFieldLocator = By.id("postform-name");
     private final By submitButtonLocator = By.xpath("//button[@class='btn -big']");
 
+    private static final String EXPIRATION_DROPDOWN = "//li[text()='%s']";
+    private static final String HIGHLIGHT_DROPDOWN = "//li[text()='%s']";
+
     // Reusable WebDriverWait with a default timeout of 10 seconds
     private final WebDriverWait wait;
 
@@ -35,11 +38,11 @@ public class PastebinPage {
 
         WebElement expirationDropdown = waitForElementToBeClickable(expirationDropdownLocator);
         expirationDropdown.click();
-        driver.findElement(By.xpath("//li[text()='" + expiration + "']")).click();
+        driver.findElement(By.xpath(String.format(EXPIRATION_DROPDOWN, expiration))).click();
 
         WebElement highlightDropdown = waitForElementToBeClickable(highlightDropdownLocator);
         highlightDropdown.click();
-        driver.findElement(By.xpath("//li[text()='" + highlight + "']")).click();
+        driver.findElement(By.xpath(String.format(HIGHLIGHT_DROPDOWN, highlight))).click();
 
         WebElement nameField = waitForVisibilityOfElement(nameFieldLocator);
         nameField.sendKeys(name);
